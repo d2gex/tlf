@@ -17,7 +17,8 @@ def get_stop_point_info(stop_point_id):
         data = json.loads(api_data)
     except json.decoder.JSONDecodeError:
         abort(500)
-    arrivals = [models.Arrivals(expectedArrival=each_arrival['expectedArrival']) for each_arrival in data]
+    arrivals = [models.Arrivals(expectedArrival=each_arrival['expectedArrival'], vehicleId=each_arrival['vehicleId'])
+                for each_arrival in data]
     if arrivals:
         models.StopPoint.objects(pk=stop_point_id).update_one(upsert=True,
                                                               add_to_set__arrivals=arrivals)

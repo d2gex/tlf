@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 class Arrivals(db.EmbeddedDocument):
+    vehicleId = db.StringField(max_length=15, required=True)
     expectedArrival = db.DateTimeField(required=True)
     local_timestamp = db.DateTimeField(default=datetime.utcnow)
 

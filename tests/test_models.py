@@ -3,9 +3,9 @@ from datetime import datetime, timedelta
 
 
 def test_db_operations():
-    arrival_1 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=10))
-    arrival_2 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=20))
-    arrival_3 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=30))
+    arrival_1 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=10), vehicleId='BX54DMZ')
+    arrival_2 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=20), vehicleId='BI9999X')
+    arrival_3 = models.Arrivals(expectedArrival=datetime.utcnow() + timedelta(seconds=30), vehicleId='JI888hX')
 
     stop_id = '444450W'
     # Create a record afresh
@@ -20,3 +20,4 @@ def test_db_operations():
     assert len(models.StopPoint.objects().all()) == 1
     db_data = models.StopPoint.objects().first()
     assert len(db_data.arrivals) == 3
+    assert db_data.arrivals[0].vehicleId == 'BX54DMZ'
