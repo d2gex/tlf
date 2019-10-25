@@ -128,3 +128,54 @@ requires more thought.
 
 ..  _api_tlf:
     https://tfl.gov.uk/info-for/open-data-users/our-open-data#on-this-page-3
+
+Install and Run
+================
+The instructions provided below are only to run the application in development mode using Flask development web server.
+
+a) Clone this repo and install the requirements as follows::
+
+    $ pip install -r requirements.txt
+
+b) Create a Mongo database, user and associate permissions
+
+c) You need to set up your ``.env`` file as follows:
+
+.. code-block:: bash
+
+    SECRET_KEY = 'your secret key'
+
+    DB = 'your_db'
+    DB_USER = 'your_user'
+    DB_PASSWORD = 'your_password'
+    DB_HOST = 'your_host'
+    DB_PORT = 'your_port'
+
+d) Add a ``.flaskenv`` environmental file in you root folder as follows:
+
+.. code-block:: bash
+
+    FLASK_APP=src/app
+    FLASK_ENV=development
+
+
+e) Run the Flask server as follows::
+
+    $ flask run
+
+
+g) Point your browser to the end point http://localhost:5000/frontend/490009333W to fetch arrival data about "490009333W".
+   Reload the page a couple of time to generate historical data. The JSON content returned from the API should be shown
+
+f) Point your browser to the end point http://localhost:5000/frontend/history/490009333W to se historical data
+
+*NB1*: If you go to f) before g) you will get a 404 error as described in the section above as such data isn't yet
+avaiable.
+
+
+*NB2*: Please see that that ``.env`` and ``.flaskenv`` need to be in the root folder. They are not provided with
+the git sources. See figure below
+
+.. image:: docs/images/project_view.png
+    :alt: Root Folder screenshot
+    :target: #
