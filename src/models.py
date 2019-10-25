@@ -13,3 +13,4 @@ class StopPoint(db.Document):
     # UTC-offset in which time is stored given that Mongo stores datetimes in UTC
     utc_arrival_timezone = db.IntField(default=0)
     arrivals = db.EmbeddedDocumentListField(Arrivals)
+

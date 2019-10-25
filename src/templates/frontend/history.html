@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block header %}
+    <script type="text/javascript" language="javascript"
+            src="{{ url_for('frontend.static', filename='js/history.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('frontend.static', filename='css/index.css') }}">
+{% endblock header %}
+{% block content %}
+    <table id="quotes_data" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th>VehicleID</th>
+            <th>Expected Arrival(Zulu Time)</th>
+            <th>Timestamp(Local Time)</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for vehicleId, data_time in data.items() %}
+            {% for record in data_time %}
+                <tr>
+                    <td>{{ vehicleId }}</td>
+                    <td>{{ record['expectedArrival'].strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                    <td>{{ record['timestamp'].strftime('%d-%m-%Y %H:%M:%S.%f')[:-3] }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>VehicleID</th>
+            <th>Expected Arrival(Zulu Time)</th>
+            <th>Timestamp(Local Time)</th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock content %}
