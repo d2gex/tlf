@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block common_header %}{% endblock common_header %}
+{% block header %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript"
+            src="{{ url_for('frontend.static', filename='js/index.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('frontend.static', filename='css/index.css') }}">
+{% endblock header %}
+{% block content %}
+    <pre>{{ data }}</pre>
+{% endblock content %}

@@ -10,4 +10,6 @@ def create_app(config_class=config.Config):
     app.config.from_object(config_class)
     db.init_app(app)
 
+    from src.frontend.views import frontend
+    app.register_blueprint(frontend, url_prefix='/frontend')
     return app

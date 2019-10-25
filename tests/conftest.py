@@ -10,9 +10,9 @@ from tests import utils as test_utils
 
 @pytest.fixture(scope='session')
 def api_data():
-    with open(join(test_utils.TEST, 'stubs', 'api_output.json')) as fh:
+    with open(join(test_utils.TEST, 'stubs', 'api_data.json')) as fh:
         content = fh.read()
-    return json.loads(content)
+    return content
 
 
 @pytest.fixture(scope='session', autouse=True)
