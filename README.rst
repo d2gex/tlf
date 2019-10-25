@@ -80,6 +80,10 @@ Given that our model use embedded documents, the ``$add_to_set`` operator has be
 method and the ``upsert`` property. The idea is that if the document does not exist, then it is created. Otherwise
 it is updated in-placed.
 
+Timezones
+=========
+I kept both the ``expectedArrival`` and the ``timestamp`` in Zulu time.
+
 Some representative screenshots
 ===============================
 
@@ -118,6 +122,8 @@ if:
 3.  Use the ``Etag`` header to hash the content so that we tell the browser whether to use its cache or afresh data,
     HTTP is a synchronous protocol so the response needs to be sent back browser anyway, however we would return no
     generating less heavy traffic in our server.
+4.  Difficult to know what the exact requirements are but converting the time to local ``Europe/London`` timezone
+    when the data is displayed int he browser would obviously be useful from the user point of view.
 
 Other solutions like intermediate in-memory databases could improve significantly the performance but the case studies
 requires more thought.
