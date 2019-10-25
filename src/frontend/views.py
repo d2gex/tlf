@@ -39,7 +39,7 @@ def get_history(stop_point_id):
     data = defaultdict(list)
     for arrival in db_data.arrivals:
         data[arrival.vehicleId].append({'expectedArrival': arrival.expectedArrival,
-                                        'timestamp': arrival.local_timestamp})
+                                        'timestamp': arrival.timestamp})
     return render_template('frontend/history.html', data=data)
 
 
